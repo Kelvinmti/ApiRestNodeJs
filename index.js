@@ -21,14 +21,21 @@ function checkProjectExists(req, res, next) {
 server.use((req, res, next) => {
   cont++;
 
-  console.log("Requisições efetuadas: " + cont);
+  console.log(`Requisições efetuadas: ${cont}`);
 
   next();
 });
 
 server.post("/projects", (req, res) => {
-  req.body.tasks = [];
-  projects.push(req.body);
+  const { id, title } = req.body;
+
+  const project = {
+    id,
+    title,
+    tasks: []
+  };
+
+  projects.push(project);
 
   return res.json(projects);
 });
@@ -42,9 +49,6 @@ server.put("/projects/:id", checkProjectExists, (req, res) => {
 
   const project = projects.find(p => p.id == id);
   project.title = req.body.title;
-
-  const index = projects.findIndex(p => p.id == id);
-  projects[index] = project;
 
   return res.json(project);
 });
@@ -63,9 +67,6 @@ server.post("/projects/:id/tasks", checkProjectExists, (req, res) => {
 
   const project = projects.find(p => p.id == id);
   project.tasks.push(req.body.title);
-
-  const index = projects.findIndex(p => p.id == id);
-  projects[index] = project;
 
   return res.json(project);
 });
