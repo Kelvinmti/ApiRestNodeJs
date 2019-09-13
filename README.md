@@ -1,9 +1,9 @@
 # ApiRestNodeJs
 
-Essa é uma simples API desenvolvida em NodeJs com os principais métodos HTTP usados (POST, GET, PUT e DELETE), além de usar conceitos simples porém importantes como middlewares de escopo local e global.
+This is a simple Node.js API in which was used the main HTTP methods (POST, GET, PUT e DELETE), besides using middlewares of local and global scope.  
 
-O projeto foi criado com o yarn.
+The project was created with Yarn.
 
-Bibliotecas utilizadas
+Libraries used:
 - express
 - nodemon
